@@ -9,18 +9,34 @@ package lab8;
  *
  * @author Claudiu
  */
+import java.sql.*;
+
 public class Database {
-    private static Connection conn = null;
-    
-    public static Connection createConnection(String user, String pwd) {
-        if (conn = null) {
+    private static Database databaseInstance = null;
+    static Connection connection;
+
+    private Database(String url, String user, String password) {
+        try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:XE", user, pwd);
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        return conn;
     }
-    
-    public static void closeConnection() {
-        conn = null;
+
+
+    public static Database getDatabaseInstance(String url, String user, String password) {
+        if (databaseInstance == null) {
+            databaseInstance = new Database(url, user, password);
+        }
+        return databaseInstance;
+    }
+
+    public static void closeDatabase() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
