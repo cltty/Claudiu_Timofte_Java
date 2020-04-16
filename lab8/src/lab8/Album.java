@@ -14,6 +14,13 @@ public class Album {
     int artId;
     int releaseYear;
     String name;
+    
+    public Album(int id, int artId, int releaseYear, String name) {
+        this.id = id;
+        this.artId = artId;
+        this.releaseYear= releaseYear;
+        this.name = name;        
+    }
 
     public void setId(int id) {
         this.id = id;
