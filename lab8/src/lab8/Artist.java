@@ -11,7 +11,7 @@ package lab8;
  */
 public class Artist {
     int id;
-    String Name;
+    String name;
     String country;
     
     public Artist(int id, String name, String country) {
@@ -24,8 +24,8 @@ public class Artist {
         this.id = id;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -33,13 +33,11 @@ public class Artist {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getCountry() {
         return country;
     }
-    
-    .
-    
+       
 }
